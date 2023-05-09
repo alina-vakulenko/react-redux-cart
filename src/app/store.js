@@ -1,8 +1,15 @@
-import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import { createStore, combineReducers } from "redux";
 
-export const store = configureStore({
-  reducer: {
-    counter: counterReducer,
-  },
-});
+import { cartReducer } from "../features/cart/cartSlice.js";
+import { inventoryReducer } from "../features/inventory/inventorySlice.js";
+import { currencyFilterReducer } from "../features/currencyFilter/currencyFilterSlice.js";
+import { searchTermReducer } from "../features/searchTerm/searchTermSlice.js";
+
+export const store = createStore(
+  combineReducers({
+    cart: cartReducer,
+    inventory: inventoryReducer,
+    currencyFilter: currencyFilterReducer,
+    searchTerm: searchTermReducer,
+  })
+);
